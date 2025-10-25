@@ -24,10 +24,6 @@ p{
 .details{
     width: 960px;
     display:grid;
-    grid-template-columns: 2fr 2fr 1fr;
-}
-form{
-    display:grid;
     grid-template-columns: 2fr 1fr;
 }
 .button{

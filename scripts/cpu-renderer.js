@@ -169,11 +169,10 @@ var heightmapScale = 2;
 var heightData = [heightmapResolution * heightmapResolution * 4];
 
 // Player movement variables ---
-var playerPosition = new Vector3(512.2,512.8,4);
+var playerPosition = new Vector3(128,128,4);
 var playerVelocity = new Vector3(0,0,0);
 var playerAcceleration = 0.005;
-var playerGravity = -0.30;
-var playerJumpVelocity = 10;
+var playerVerticalAcceleration = 0.2;
 var playerCameraHeight = 30.0;
 
 // Input variables and events---
@@ -214,6 +213,10 @@ document.addEventListener('mousemove', (event) => {
 
 myCanvas.addEventListener('click', async () => {
     await myCanvas.requestPointerLock();
+});
+
+document.getElementById('restart').addEventListener('click', function() {
+  window.location.reload();
 });
 
 //Initialization of the heightmap ---
@@ -259,12 +262,6 @@ function playerPhysics(){
     playerPosition.add(playerVelocity);
     if(-getHeight(playerPosition.x, playerPosition.y) > playerPosition.z){
         playerPosition.z = -getHeight(playerPosition.x, playerPosition.y);
-        playerVelocity.z = 0;
-        if (pressedKeys['e']){
-            playerVelocity.z = playerJumpVelocity;
-        }
-    } else {
-        playerVelocity.z = playerVelocity.z + playerGravity;
     }
 
     const forwardX = Math.sin(cameraRotation.x * (Math.PI / 180));
@@ -299,6 +296,7 @@ function playerPhysics(){
     cameraRotation.y = cameraRotation.y - MouseY * 4.0;
     playerVelocity.x = playerVelocity.x * 0.95;
     playerVelocity.y = playerVelocity.y * 0.95;
+    playerVelocity.z = playerVelocity.z * 0.98;
     cameraPosition.set(playerPosition.x,playerPosition.y,playerPosition.z);
     cameraPosition.z = cameraPosition.z + playerCameraHeight;
 }
