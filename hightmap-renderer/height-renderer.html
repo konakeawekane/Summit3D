@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit3D v1.0</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="content">
+        <canvas id="myCanvas" width="960" height="600"></canvas>
+        <div class="details">
+            <section>
+                <h1>Controlls</h1>
+                <p>WASD keys for horizontal movement</p>
+                <p>Space Bar to jump</p>
+                <p>Mouse to look around</p>
+            </section>
+            <section>
+                <h1>Settings</h1>
+                <form action="">
+                    <label for="resolution">Resolution:</label>
+                    <input id="resolution" type="text">
+                    <label for="iterations">Step Iterations:</label>
+                    <input id="iterations" type="text">
+                    <label for="distance">Veiw Distance:</label>
+                    <input id="distance" type="text">
+                    <br>
+                    <input type="submit">
+                </form>
+            </section>
+            <section>
+                <h1>Game</h1>
+                <div class="button" id="restart">Restart</div>
+                <div class="button" id="change-map">Change Map</div>
+            </section>
+        </div>
+        
+    </div>
+    <script src="scripts/cpu-renderer.js"></script>
+</body>
+</html>
